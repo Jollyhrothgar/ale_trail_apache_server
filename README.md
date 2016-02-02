@@ -14,6 +14,7 @@ Note that the final directory structure may vary.
 
 For me, the directory structure which eventually worked was:
 
+```
 /var/www/FlaskApp
 /var/www/FlaskApp/FlaskApp
 /var/www/FlaskApp/FlaskApp/__init__.py
@@ -22,7 +23,7 @@ For me, the directory structure which eventually worked was:
 /var/www/FlaskApp/FlaskApp/templates
 /var/www/FlaskApp/FlaskApp/venv (python virtual environment)
 /var/www/FlaskApp/flaskapp.wsgi
-
+```
 ## Step 3:
 profit
 
