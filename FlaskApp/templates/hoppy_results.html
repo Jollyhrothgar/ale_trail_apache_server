@@ -36,21 +36,21 @@
         <br>
         <table class="table" style="font-size:2em;color:white;background:rgba(0,0,0,0.8)"> 
             <tr>
-                <th>Flavors</th>
-                <th>Name</th>
-                <th>Style</th>
-                <th>Brewery</th>
-                <th>City</th>
-                <th>Location</th>
+                <th>Flavors  </th>
+                <th>City     </th>
+                <th>Brewery  </th>
+                <th>Style    </th>
+                <th>Name     </th>
+                <th>Map it!  </th>
             </tr> 
             {% for beer in beers %} 
             <tr>
                 <td><img src="{{ beer['img']  }}" width=25% alight=center></td>
-                <td>{{ beer['beer_name']  }}</td>
-                <td>{{ beer['beer_style'] }}</td>
-                <td> {{ beer['brewery_name']  }}</td>
-                <td> {{ beer['city']  }}</td>
-                <td> {{ beer['loc']  }}</td>
+                <td> {{ beer['city']         }}</td>
+                <td> {{ beer['brewery_name'] }}</td>
+                <td> {{ beer['beer_style']   }}</td>
+                <td> {{ beer['beer_name']    }}</td>
+                <td> {{ beer['loc']          }}</td>
             </tr> 
             <br>
             {% endfor %} 
