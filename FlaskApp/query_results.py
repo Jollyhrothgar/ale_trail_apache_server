@@ -3,6 +3,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 import psycopg2
+import re
 from nltk.stem import PorterStemmer
 ps = PorterStemmer()
 
@@ -26,6 +27,12 @@ def query_results(hop_range_min,hop_range_max,key_word_1,key_word_2):
     mypassword = 'simple'
 
     status = 1
+
+    print "attempted keyword1:",key_word_1
+    print "attempted keyword2:",key_word_2
+    ## Sanitize input from nefarious actors...
+    key_word_1 = re.sub(r'[^a-zA-Z]+', '', key_word_1)
+    key_word_2 = re.sub(r'[^a-zA-Z]+', '', key_word_2)
 
     print 'hop_range_min:',hop_range_min
     print 'hop_range_max:',hop_range_max
