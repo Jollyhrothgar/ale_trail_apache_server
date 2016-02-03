@@ -32,5 +32,3 @@ I fooled around with the webapp directory structure while simultaneously running
 located at /var/log/apache2/error.log. This was a great way to check what works,
 what doesn't. Additionaly, its fun to run 'tail -f' on the other apache log
 files so you can watch people use your site in real time.
-
-Now adding haversine curves to get user to local breweries.
