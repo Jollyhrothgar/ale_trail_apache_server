@@ -40,7 +40,7 @@ def hoppy_results_page():
     word_1 = word_1.lower()
     word_2 = word_2.lower()
 
-    results = query_results(0.6,1.0,word_1,word_2)
+    results = query_results(0.6,1.0,word_1,word_2,10000,'San Francisco')
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:
@@ -54,7 +54,7 @@ def medium_results_page():
     word_1 = word_1.lower()
     word_2 = word_2.lower()
 
-    results = query_results(0.4,0.6,word_1,word_2)
+    results = query_results(0.4,0.6,word_1,word_2,10000,'San Francisco')
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:
@@ -67,7 +67,7 @@ def dark_results_page():
     word_2  = request.form['hop_word_2']
     word_1 = word_1.lower()
     word_2 = word_2.lower()
-    results = query_results(0.0,0.4,word_1,word_2)
+    results = query_results(0.0,0.4,word_1,word_2,10000,'San Francisco')
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:

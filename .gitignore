@@ -1,2 +1,3 @@
 ./FlaskApp/venv*
+*.swp
 FlaskApp/static/img/beer/*description.png

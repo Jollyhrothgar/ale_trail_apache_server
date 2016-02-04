@@ -215,18 +215,26 @@ def query_results(hop_range_min,hop_range_max,key_word_1,key_word_2,distance_thr
     beer_list_and = filter_results(results_and,distance_threshold,ref_city)
     beer_list_or = filter_results(results_or,distance_threshold,ref_city)
     beer_list_neither = filter_results(results_neither,distance_threshold,ref_city)
-    
+   
     results_dict = {}
-    results_dict['status'] = 0    
+    results_dict['status'] = 0
+    results_dict['beer_list'] = []
+    status = 0
     if len(beer_list_and) > 4:
-        results_dict = beer_list_and[:5]
+        status = 0
+        results_dict['beer_list'] = beer_list_and[:5]
     elif len(beer_list_or) > 4:
-        results_dict = beer_list_or[:5]
+        status = 1
+        results_dict['beer_list'] = beer_list_or[:5]
     elif len(beer_list_neither) > 4:
-        results_dict = beer_list_neither[:5]
+        results_dict['beer_list'] = beer_list_neither[:5]
+        status = 2
     elif len(beer_list_neither) == 1:
-        results_dict = beer_list_neither
+        results_dict['beer_list'] = beer_list_neither
+        status = 3
     else:
+        status = 4
         print "unhandled error, no results found, but dict did not return error handler from SQL query"
     cur.close()
+    results_dict['status'] = status
     return results_dict
