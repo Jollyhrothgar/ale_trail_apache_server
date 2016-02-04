@@ -87,7 +87,27 @@ def filter_results(query_results, distance_threshold,ref_city):
         beer_list.append(error_dict)
     return beer_list
 
-def query_results(hop_range_min,hop_range_max,key_word_1,key_word_2,distance_threshold,ref_city):
+def get_distinct_breweries(beer_list):
+    """
+    Assume that the beer_list is sorted in order of the best beers. This function will attempt
+    to get the best beers in the list, but only for unique breweries, to encourage travel. If it fails,
+    then you get back the list you gave it.
+    """
+    already_visited = {}
+    distinct_list = []
+    
+    for beer in beer_list:
+        if beer['brewery_name'] not in already_visited:
+            already_visited[beer['brewery_name']] = True
+            distinct_list.append(beer)
+        else:
+            continue
+    if len(distinct_list) > 5:
+        return distinct_list
+    else:
+        return beer_list
+
+def query_results(hop_range_min,hop_range_max,key_word_1,key_word_2,distance_threshold,ref_city,variety_setting):
     """
     given a range of hop-values, returns a dict of the form:
     dict[status_id]{beer_dictionary} where beer_dictionary populates an
@@ -212,10 +232,16 @@ def query_results(hop_range_min,hop_range_max,key_word_1,key_word_2,distance_thr
     print "no keywords:",len(results_neither)
 
     # Get beer lists based on query possibilities
-    beer_list_and = filter_results(results_and,distance_threshold,ref_city)
-    beer_list_or = filter_results(results_or,distance_threshold,ref_city)
-    beer_list_neither = filter_results(results_neither,distance_threshold,ref_city)
-   
+    if variety_setting == "variety":
+        beer_list_and = get_distinct_breweries(filter_results(results_and,distance_threshold,ref_city))
+        beer_list_or = get_distinct_breweries(filter_results(results_or,distance_threshold,ref_city))
+        beer_list_neither = get_distinct_breweries(filter_results(results_neither,distance_threshold,ref_city))
+    else:
+        beer_list_and = filter_results(results_and,distance_threshold,ref_city)
+        beer_list_or = filter_results(results_or,distance_threshold,ref_city)
+        beer_list_neither = filter_results(results_neither,distance_threshold,ref_city)
+    
+     
     results_dict = {}
     results_dict['status'] = 0
     results_dict['beer_list'] = []

@@ -37,10 +37,16 @@ def bright_hoppy_page():
 def hoppy_results_page():
     word_1  = request.form['hop_word_1']
     word_2  = request.form['hop_word_2']
+    city = str(request.form['cities'])
+    brewery_radius = float(request.form['brewery_radius'])
+    variety_setting = request.form['variety_setting']
     word_1 = word_1.lower()
     word_2 = word_2.lower()
 
-    results = query_results(0.6,1.0,word_1,word_2,10000,'San Francisco')
+    print "got city!",city
+    print "got radius!",brewery_radius
+    print "got variety!",variety_setting
+    results = query_results(0.6,1.0,word_1,word_2,brewery_radius,city,variety_setting)
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:
@@ -51,10 +57,16 @@ def hoppy_results_page():
 def medium_results_page():
     word_1  = request.form['hop_word_1']
     word_2  = request.form['hop_word_2']
+    city = str(request.form['cities'])
+    brewery_radius = float(request.form['brewery_radius'])
+    variety_setting = request.form['variety_setting']
     word_1 = word_1.lower()
     word_2 = word_2.lower()
 
-    results = query_results(0.4,0.6,word_1,word_2,10000,'San Francisco')
+    print "got city!",city
+    print "got radius!",brewery_radius
+    print "got variety!",variety_setting
+    results = query_results(0.4,0.6,word_1,word_2,10000,'San Francisco',variety_setting)
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:
@@ -65,9 +77,16 @@ def medium_results_page():
 def dark_results_page():
     word_1  = request.form['hop_word_1']
     word_2  = request.form['hop_word_2']
+    city = str(request.form['cities'])
+    brewery_radius = float(request.form['brewery_radius'])
+    variety_setting = request.form['variety_setting']
     word_1 = word_1.lower()
     word_2 = word_2.lower()
-    results = query_results(0.0,0.4,word_1,word_2,10000,'San Francisco')
+
+    print "got city!",city
+    print "got radius!",brewery_radius
+    print "got variety!",variety_setting
+    results = query_results(0.0,0.4,word_1,word_2,10000,'San Francisco',variety_setting)
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:
