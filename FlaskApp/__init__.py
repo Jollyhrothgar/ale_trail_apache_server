@@ -66,7 +66,7 @@ def medium_results_page():
     print "got city!",city
     print "got radius!",brewery_radius
     print "got variety!",variety_setting
-    results = query_results(0.4,0.6,word_1,word_2,10000,'San Francisco',variety_setting)
+    results = query_results(0.4,0.6,word_1,word_2,brewery_radius,city,variety_setting)
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:
@@ -86,7 +86,7 @@ def dark_results_page():
     print "got city!",city
     print "got radius!",brewery_radius
     print "got variety!",variety_setting
-    results = query_results(0.0,0.4,word_1,word_2,10000,'San Francisco',variety_setting)
+    results = query_results(0.0,0.4,word_1,word_2,brewery_radius,city,variety_setting)
     status = results['status']
     beer_results = results['beer_list']
     for beer_result in beer_results:

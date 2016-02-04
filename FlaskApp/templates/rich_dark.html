@@ -43,13 +43,44 @@
                         <ul class="input-list style-1 clearfix">
                             <form action="/dark_results" method="POST">
                                 <li>
-                                <input type="text" name="hop_word_1" style="font-size:4em;" placeholder="chocolate?">
+                        	<h3 style="color:white; font-size:3em; text-align:left;"><i>Write down two flavors:</i></h3>
+                                <input type="text" name="hop_word_1" style="font-size:4em;" placeholder="coffee?">
                                 </li>
                                 <li>
-                                <input type="text" name="hop_word_2" style="font-size:4em;" placeholder="coffee?">
+                                <input type="text" name="hop_word_2" style="font-size:4em;" placeholder="chocolate?">
                                 </li>
+                                <li>
+                                  <h3 style="color:white; font-size:2em; text-align:left;">Where do you want to drink?</h3> 
+				  <select name="cities">
+                                  <option value="San Francisco">San Francisco Bay Area</option>
+                                  <option value="San Diego">San Diego Area</option>
+                                  <option value="Los Angeles">Los Angeles</option>
+                                  <option value="Torrance">Southern Los Angeles</option>
+                                  <option value="Temecula">Temecula</option>
+                                  <option value="Vista, Escondido, San Marcos">North San Diego County</option>
+                                  </select>
+                                </li>
+                                <li>
+                                  <h3 style="color:white; font-size:2em; text-align:left;">Select a search range:</h3> 
+				  <select name="brewery_radius">
+                                  <option value="25">25 miles</option>
+                                  <option value="5">5 miles</option>
+                                  <option value="10">10 miles</option>
+                                  <option value="50">50 miles</option>
+                                  <option value="100">100 miles</option>
+                                  </select>
+                                </li>
+                                <li>
+                                  <h3 style="color:white; font-size:2em; text-align:left;">Do you want to visit different breweires?</h3> 
+				  <select name="variety_setting">
+                                  <option value="variety">Give me variety!</option>
+                                  <option value="the_best">Give me the best!</option>
+                                  </select>
+                                </li>
+				<br>
+				<br>
                                 <input type="submit" style="font-size:3em;"name="hop-word-form" >
-		             </form>
+				</form>
                             </ul>
                         </section> 
                     </td>
