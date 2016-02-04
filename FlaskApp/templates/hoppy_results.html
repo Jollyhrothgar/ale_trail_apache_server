@@ -55,7 +55,34 @@
             <br>
             {% endfor %} 
         </table> 
-        <br>
+        <h1>Your Beer Awaits</h1>
+    <div id="map" style="height:600px;width:600px;margin:auto;width:60%;padding:10px"></div>
+    <script>
+
+function initMap() {
+  var myLatLng = {lat: -25.363, lng: 131.044};
+  var latlng = [];
+{% for beer in beers %}
+  latlng.push( new google.maps.LatLng({{beer['loc']}}) )
+{% endfor %}
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: latlng[0]
+  });
+
+  for ( var i = 0; i < latlng.length; i++) {
+  var marker = new google.maps.Marker({
+    position: latlng[i],
+    map: map,
+    title: 'Hello World!'
+  });
+}
+}
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqgpyknPVo1wWuY60K-bJYPpk-c49fTLs&signed_in=true&callback=initMap"></script>
+
         <h1><i><a href="/index" color=white>Try Again?</a></i><h1>
     </div>
 </header>
